@@ -1,5 +1,4 @@
 package fr.uvsq.cprog.collex;
-
 public class DnsItem {
     private final AdresseIP adresseIP;
     private final NomMachine nomMachine;
