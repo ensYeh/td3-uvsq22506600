@@ -9,3 +9,8 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+# -----------------------------
+# Fichiers de données générés par l'application
+# -----------------------------
+dns.txt
+dns_test.txt
