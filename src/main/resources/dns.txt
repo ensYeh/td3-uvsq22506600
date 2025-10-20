@@ -1,0 +1,4 @@
+serveur.local 172.180.2.4
+pikachu.uvsq.fr 193.51.25.24
+www.uvsq 192.162.1.10
+ecampus.uvsq.fr 193.51.25.12

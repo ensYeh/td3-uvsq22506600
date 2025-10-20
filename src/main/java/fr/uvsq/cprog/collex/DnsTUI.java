@@ -23,7 +23,7 @@ public class DnsTUI {
             boolean trierParIP = tokens.length > 2 && tokens[1].equals("-a");
             String domaine = trierParIP ? tokens[2] : tokens[1];
             return new CommandeList(dns, domaine, trierParIP);
-        } else if (tokens[0].equalsIgnoreCase("quit")) {
+        } else if (tokens[0].equalsIgnoreCase("quitter")) {
             return new CommandeQuit();
         } else if (tokens[0].matches("\\d+\\.\\d+\\.\\d+\\.\\d+")) {
             return new CommandeGetNom(dns, tokens[0]);

@@ -4,9 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.List;
+import java.util.Properties;
 
 public class DnsTest {
 
@@ -15,8 +17,24 @@ public class DnsTest {
 
     @Before
     public void setUp() throws IOException, AdresseIPInvalideException, NomMachineInvalideException {
-        fichier = Paths.get("dns_test.txt");
-        Files.deleteIfExists(fichier); // on repart à zéro
+        // Charger le fichier config.properties
+        Properties props = new Properties();
+        try (FileInputStream input = new FileInputStream("config.properties")) {
+            props.load(input);
+        }
+
+        // Lire la clé dns.test.file pour la base de test
+        String cheminFichierTest = props.getProperty("dns.test.file");
+        if (cheminFichierTest == null || cheminFichierTest.isBlank()) {
+            throw new IllegalArgumentException("Clé 'dns.test.file' absente ou vide dans config.properties");
+        }
+
+        fichier = Paths.get(cheminFichierTest);
+
+        // Supprimer l’ancien fichier pour repartir à zéro
+        Files.deleteIfExists(fichier);
+
+        // Initialiser la base DNS pour les tests
         dns = new Dns(fichier);
     }
 
